@@ -32,12 +32,33 @@ class TarefasController extends Controller
          }
     }
 
-    public function edit(){
+    public function edit($id){
+
+          $data = DB::select('SELECT * FROM tarefas WHERE id = :id', ['id' => $id]);
+
+          if (count($data) > 0) {
+               return view('tarefas.edit', ['data' => $data[0]]); //Pega primeiro item da consulta.
+          }else{
+               return redirect()->route('tarefas.list');
+          }
          return view('tarefas.edit');
     }
 
-    public function editAction(){
+    public function editAction(Request $request, $id){
          
+          if ($request->filled('titulo')) {
+
+               $titulo = $request->input('titulo');
+                   
+               DB::update('UPDATE tarefas SET titulo = :titulo WHERE id = :id', ['id' => $id, 'titulo' => $titulo] );
+               
+               return redirect()->route('tarefas.list');
+               
+          }else{
+               return redirect()
+               ->route('tarefas.edit', ['id' => $id])
+               ->with('warning', 'Você não preencheu o titulo');
+          }
     }
 
     public function del(){
