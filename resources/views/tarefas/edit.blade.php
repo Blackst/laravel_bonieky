@@ -5,7 +5,7 @@
 @section('content')
  <h1>Edição</h1>
 
- @if (session('warning'))
+ @if (session('warning')) //Tem que ativar o alert dentro do provider
     @alert
         {{ session('warning')}}
     @endalert
