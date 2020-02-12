@@ -5,10 +5,12 @@
 @section('content')
  <h1>Edição</h1>
 
- @if (session('warning')) //Tem que ativar o alert dentro do provider
-    @alert
-        {{ session('warning')}}
-    @endalert
+ @if($errors->any())
+     @alert
+        @foreach ($errors->all() as $error)
+            {{$error}}<br>
+        @endforeach
+     @endalert
  @endif
 
  <form method="POST">

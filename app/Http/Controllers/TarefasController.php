@@ -19,17 +19,15 @@ class TarefasController extends Controller
     }
 
     public function addACtion(Request $request){
-         if ($request->filled('titulo')) {
-              $titulo = $request->input('titulo');
+          $request->validate([
+               'titulo' => ['required', 'string']
+          ]); //É requerido e o campo é uma string.
 
-              DB::insert('INSERT INTO tarefas (titulo) VALUES (:titulo)', ['titulo'=>$titulo]);
+          $titulo = $request->input('titulo');
 
-              return redirect()->route('tarefas.list');
-         }else{
-               return redirect()
-               ->route('tarefas.add')
-               ->with('warning', 'Você não preencheu o titulo');
-         }
+          DB::insert('INSERT INTO tarefas (titulo) VALUES (:titulo)', ['titulo'=>$titulo]);
+
+          return redirect()->route('tarefas.list');
     }
 
     public function edit($id){
@@ -45,20 +43,16 @@ class TarefasController extends Controller
     }
 
     public function editAction(Request $request, $id){
-         
-          if ($request->filled('titulo')) {
 
-               $titulo = $request->input('titulo');
+          $request->validate([
+               'titulo' => ['required', 'string']
+          ]); //É requerido e o campo é uma string.
+         
+          $titulo = $request->input('titulo');
                    
-               DB::update('UPDATE tarefas SET titulo = :titulo WHERE id = :id', ['id' => $id, 'titulo' => $titulo] );
-               
-               return redirect()->route('tarefas.list');
-               
-          }else{
-               return redirect()
-               ->route('tarefas.edit', ['id' => $id])
-               ->with('warning', 'Você não preencheu o titulo');
-          }
+          DB::update('UPDATE tarefas SET titulo = :titulo WHERE id = :id', ['id' => $id, 'titulo' => $titulo] );
+          
+          return redirect()->route('tarefas.list');
     }
 
     public function del($id){
