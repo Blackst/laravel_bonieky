@@ -107,8 +107,7 @@ Route::prefix('/config')->group(function(){
     Route::get('permissoes', 'Admin\ConfigController@permissoes');
 });
 
-Route::resource('Todo', 'todoController');
-
+Route::resource('todo', 'todoController');
 
 Route::prefix('/tarefas')->group(function(){
 
