@@ -107,6 +107,9 @@ Route::prefix('/config')->group(function(){
     Route::get('permissoes', 'Admin\ConfigController@permissoes');
 });
 
+Route::resource('Todo', 'todoController');
+
+
 Route::prefix('/tarefas')->group(function(){
 
     Route::get('/', 'TarefasController@list')->name('tarefas.list'); //Listagem de tarefas
