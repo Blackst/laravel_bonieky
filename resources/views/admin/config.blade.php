@@ -5,6 +5,8 @@
 @section('content')
 <h1>Configurações</h1>
 
+<a href="/logout">Sair</a>
+
 Meu nome é {{$nome2}} e eu tenho {{$idade2}} anos. <br><br>
 
 @if($idade2 > 18 && $idade2 <= 60)
