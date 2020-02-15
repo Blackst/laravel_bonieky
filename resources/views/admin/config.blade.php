@@ -45,7 +45,7 @@ Meu nome é {{$nome2}} e eu tenho {{$idade2}} anos. <br><br>
 </ul>
 
 <br>
-
+@if($showform)
 <form method="POST">
     @csrf
 
@@ -59,6 +59,7 @@ Meu nome é {{$nome2}} e eu tenho {{$idade2}} anos. <br><br>
     <input type="nuumber" name="idade"><br>
     <input type="submit" value="Enviar"><br><br>
 </form>
+@endif
 
 <a href="/config/info">Informações</a>
 

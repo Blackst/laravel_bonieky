@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Gate;
+
 class ConfigController extends Controller
 {
 
@@ -71,7 +73,8 @@ class ConfigController extends Controller
         $dados2 = [
             'nome2' =>$nome2,
             'idade2' => $idade2,
-            'lista' => $lista
+            'lista' => $lista,
+            'showform' => Gate::allows('see-form')
         ];
         
         //Quando colocar um arquivo dentro de uma pasta no view tem que colocar o ponto invés de / como abaixo
