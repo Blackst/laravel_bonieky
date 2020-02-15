@@ -5,7 +5,7 @@
 @section('content')
 <h1>Configurações</h1>
 
-<a href="/logout">Sair</a>
+Seja bem vindo {{$nome2}} - <a href="/logout">Sair</a>
 
 Meu nome é {{$nome2}} e eu tenho {{$idade2}} anos. <br><br>
 

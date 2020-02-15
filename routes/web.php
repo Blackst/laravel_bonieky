@@ -98,7 +98,7 @@ Route::prefix('/config')->group(function(){
     //Como o controller configcontroller esta dentro da pasta admin é preciso colocar o name espace dentro do controller
     //E também colocar o nome da pasta antes do controller.
 
-    Route::get('/', 'Admin\ConfigController@index')->name('config.index')->middleware('auth');
+    Route::get('/', 'Admin\ConfigController@index')->name('config.index');
 
     Route::post('/', 'Admin\ConfigController@index');
 

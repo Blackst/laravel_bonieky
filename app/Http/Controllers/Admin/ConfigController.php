@@ -12,6 +12,10 @@ use Illuminate\Http\Request;
 
 class ConfigController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
     
     public function index(Request $request){
 
@@ -58,7 +62,10 @@ class ConfigController extends Controller
             ['nome' =>'Ingrediente especial', 'qt'=>'1']
         ];
 
-        $nome2 = "Bonieky";
+        $user = $request->user();
+        $nome = $user->name;
+
+        $nome2 = $nome;
         $idade2 = 90;
 
         $dados2 = [
@@ -77,6 +84,6 @@ class ConfigController extends Controller
     }
 
     public function permissoes(){
-        echo 'Configurações Permissôes 3';
+        echo 'Configurações Permissões 3';
     }
 }
