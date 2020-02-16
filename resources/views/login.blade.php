@@ -16,6 +16,8 @@
         <input type="email" name="email" placeholder="Digite um e-mail"><br>
         <input type="password" name="password" placeholder="Digite uma senha"><br>
         <input type="submit" value="Entrar">
-    </form>
+    </form><br>
+
+    Tentativas de login: {{$tries}}
     
 @endsection
